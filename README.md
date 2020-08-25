@@ -1,12 +1,9 @@
 # codelist
-对ElementUI下拉框的结合编码表的二次封装
-> 基于ElementUI el-select二次封装的下拉框组件。
->
-> 项目后台接口有一张字典表，类似字典编码值，字典名称，分类名称。
->
-> 提供了一个公共接口通过分类的编码值，查询出该分类下所有数据
+> 基于ElementUI el-select二次封装的下拉框组件。减少开发人员重复编写相同代码。
+> 项目数据库设计有一张字典表，有字典编码值，字典名称，分类编码值等字段。
+> 后端提供了一个公共接口通过分类的编码值，查询出该分类下所有数据。
 
-## 后台接口
+## 后台接口说明
 
 ```json
 QueryPath: /xxx/xxx?type=xxxx
@@ -40,6 +37,7 @@ v-model 为绑定的字典表编码值
 k 返回数据下拉框指定的value值，默认dictionaryCode
 l 返回数据下拉框指定的label值，默认为dictionaryName
 apiurl 可以改变默认的接口路径
+--------------------------------------------------------------------------------------------------------------
 <template>
   <div>
     <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" ></codelist>
