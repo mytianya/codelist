@@ -40,14 +40,15 @@ import codelist from 'codelist'
 Vue.use(codelist)
 ```
 ### 使用参数说明
+1. code: 为分类编码值
+2. v-model 为绑定的字典表编码值
+3. @select 返回的是字典编码值与字典名称对象
+4. k 返回数据下拉框指定的value值，默认dictionaryCode
+5. l 返回数据下拉框指定的label值，默认为dictionaryName
+6. apiUrl 可以改变默认的接口路径
+
+### 使用举例
 ```vue
-code: 为分类编码值
-v-model 为绑定的字典表编码值
-@select 返回的是字典编码值与字典名称对象
-k 返回数据下拉框指定的value值，默认dictionaryCode
-l 返回数据下拉框指定的label值，默认为dictionaryName
-apiurl 可以改变默认的接口路径
---------------------------------------------------------------------------------------------------------------
 <template>
   <div>
     <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" ></codelist>
