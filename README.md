@@ -6,7 +6,7 @@
 ## 后台接口说明
 
 ```json
-QueryPath: /xxx/xxx?type=xxxx
+QueryPath: /common/dictionary/queryDictionarylistByTypeCode?typeCode=xxx
 Method: GET
 return
 -----------------------------------------
@@ -45,14 +45,14 @@ Vue.use(codelist)
 3. @select： 返回的是字典编码值与字典名称对象
 4. k： 返回数据下拉框指定的value值，默认dictionaryCode
 5. l： 返回数据下拉框指定的label值，默认为dictionaryName
-6. apiUrl： 可以改变默认的接口路径 /ds/flight/dicinfo/getDicInfoByType
+6. apiUrl： 可以改变默认的接口路径 /common/dictionary/queryDictionarylistByTypeCode
 7. data： 本地数据赋值给下拉框
 ### 使用举例
 #### 配置分类编码值发送到后台获取数据
 ```vue
 <template>
   <div>
-    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" apiUrl="/ds/flight/dicinfo/getDicInfoByType"></codelist>
+    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" apiUrl="/xx/xxx"></codelist>
   </div>
 </template>
 <script>

@@ -29,7 +29,7 @@ export default {
     apiUrl: {
       required: false,
       type: String,
-      default: "/ds/flight/dicinfo/getDicInfoByType",
+      default: "/common/dictionary/queryDictionarylistByTypeCode",
     },
     k: {
       type: String,
@@ -54,7 +54,7 @@ export default {
       axios
         .get(this.apiUrl, {
           params: {
-            type: this.code,
+            typeCode: this.code,
           },
         })
         .then(function (resp) {
