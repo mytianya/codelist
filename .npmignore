@@ -1,0 +1,5 @@
+node_modules/
+.npmignore
+babel.config.js
+package-lock.json
+vue.config.js
