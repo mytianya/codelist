@@ -41,17 +41,18 @@ Vue.use(codelist)
 ```
 ### 使用参数说明
 1. code: 为分类编码值
-2. v-model 为绑定的字典表编码值
-3. @select 返回的是字典编码值与字典名称对象
-4. k 返回数据下拉框指定的value值，默认dictionaryCode
-5. l 返回数据下拉框指定的label值，默认为dictionaryName
-6. apiUrl 可以改变默认的接口路径
-
+2. v-model: 双向绑定的字典表编码值
+3. @select： 返回的是字典编码值与字典名称对象
+4. k： 返回数据下拉框指定的value值，默认dictionaryCode
+5. l： 返回数据下拉框指定的label值，默认为dictionaryName
+6. apiUrl： 可以改变默认的接口路径 /ds/flight/dicinfo/getDicInfoByType
+7. data： 本地数据赋值给下拉框
 ### 使用举例
+#### 配置分类编码值发送到后台获取数据
 ```vue
 <template>
   <div>
-    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" ></codelist>
+    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" apiUrl="/ds/flight/dicinfo/getDicInfoByType"></codelist>
   </div>
 </template>
 <script>
@@ -70,4 +71,38 @@ export default {
 }
 </script>
 ```
+#### 前台写死下拉框数据
+```
+<template>
+  <div id="app">
+      <codelist :data="sexList" v-model="sex" ></codelist>
+  </div>
+</template>
 
+<script>
+
+export default {
+  name: 'App',
+  data(){
+    return{
+      sexList:[{
+        'dictionaryCode':'man',
+        'dictionaryName':'男'
+      },{
+        'dictionaryCode':'woman',
+        'dictionaryName':'女'
+      }],
+      sex:'man'
+    }
+  }
+}
+</script>
+
+```
+## 特性
+默认集成了ElementUI el-select的clearable与filterable特性
+```
+<el-select :value="value" placeholder="请选择" @input="change($event)" filterable size="mini" clearable>
+  //...省略
+  </el-select>
+```

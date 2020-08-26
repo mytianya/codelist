@@ -82,6 +82,8 @@ export default {
   created() {
     if (!this.data) {
       this.load();
+    }else{
+      this.list=Object.assign(this.data,{});
     }
   },
 };
