@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-      <codelist code="region" v-model="code" @select="selectData"></codelist>
+      <codelist code="region" v-model="code" @select="selectData">
+        <template slot-scope="scope">
+          {{scope.k}}+{{scope.l}}
+        </template>
+      </codelist>
       <codelist :data="sexList" v-model="sex" ></codelist>
   </div>
 </template>

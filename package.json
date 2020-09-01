@@ -1,6 +1,6 @@
 {
   "name": "codelist",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "对ElementUI el-select二次封装",
   "keyword": "el-select select codelist",
   "main": "lib/codelist.umd.min.js",
@@ -9,7 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name codelist --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name codelist --dest lib packages/codelist/index.js"
   },
   "dependencies": {
     "axios": "^0.20.0",

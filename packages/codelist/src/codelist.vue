@@ -6,11 +6,14 @@
       :label="item.dictionaryName"
       :value="item.dictionaryCode"
       :disabled="item.disabled"
-    ></el-option>
+    >
+    <slot :k="item.dictionaryCode" :l="item.dictionaryName"></slot>
+    </el-option>
   </el-select>
 </template>
 <script>
-import axios from "axios";
+import options from './options'
+import axios from 'axios'
 export default {
   name: "codelist",
   data() {
@@ -29,7 +32,7 @@ export default {
     apiUrl: {
       required: false,
       type: String,
-      default: "/common/dictionary/queryDictionarylistByTypeCode",
+      default: options.defaultURL,
     },
     k: {
       type: String,
@@ -45,27 +48,29 @@ export default {
       type: [Array],
       default: undefined,
     },
+    baseURL:{
+      type:String,
+      default:''
+    }
   },
   methods: {
     load() {
       const res = new Array();
       const k = this.k;
       const l = this.l;
-      axios
-        .get(this.apiUrl, {
-          params: {
-            typeCode: this.code,
-          },
-        })
-        .then(function (resp) {
-          var data = resp.data.data;
+      axios.get(options.baseURL+'/'+this.apiUrl,{
+        params:{
+          typeCode:this.code
+        }
+      }).then(resp=>{
+       var data = resp.data.data;
           for (var i = 0; i < data.length; i++) {
             res.push({
               dictionaryCode: data[i][k],
               dictionaryName: data[i][l],
             });
           }
-        });
+      })
       this.list = Object.assign(res, {});
     },
     change(val) {

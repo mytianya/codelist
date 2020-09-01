@@ -47,12 +47,17 @@ Vue.use(codelist)
 5. l： 返回数据下拉框指定的label值，默认为dictionaryName
 6. apiUrl： 可以改变默认的接口路径 /common/dictionary/queryDictionarylistByTypeCode
 7. data： 本地数据赋值给下拉框
+8. 使用作用域插槽自定义下拉框样式
 ### 使用举例
 #### 配置分类编码值发送到后台获取数据
 ```vue
 <template>
   <div>
-    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" apiUrl="/xx/xxx"></codelist>
+    <codelist code="region" v-model="code" @select="select" k="dictionaryCode" l="dictionaryName" apiUrl="/xx/xxx">
+    	 <template slot-scope="scope">
+          {{scope.k}}+{{scope.l}}
+        </template>
+    </codelist>
   </div>
 </template>
 <script>
